@@ -1,6 +1,6 @@
 import React from "react"
 import { useParams } from "react-router-dom";
-
+import { sortByDate } from "../../helpers"
 //hook
 import { useTimelineFetch } from "../../hooks/useTimelineFetch";
 
@@ -25,42 +25,8 @@ const Timeline = () => {
     if (error)
         return <div> Something Went Wrong....</div>
 
-    const sortedCast = timeline.cast.sort((a, b) => {
-
-
-        if (a.release_date === "")
-            return -1;
-        if (b.release_date === "")
-            return 1;
-
-
-        let date1 = new Date(a.release_date);
-        let date2 = new Date(b.release_date);
-
-
-        return date1 < date2 ? 1 : -1;
-
-
-    })
-
-    const sortedCrew = timeline.crew.sort((a, b) => {
-
-
-        if (a.release_date === "")
-            return -1;
-        if (b.release_date === "")
-            return 1;
-
-
-        let date1 = new Date(a.release_date);
-        let date2 = new Date(b.release_date);
-
-
-        return date1 < date2 ? 1 : -1;
-
-
-    })
-
+    const sortedCast = sortByDate(timeline.cast);
+    const sortedCrew = sortByDate(timeline.crew);
     return (
         <>
             <TAB header="Acting">

@@ -15,7 +15,25 @@ export const convertMoney = money => {
 };
 
 
-export const isPersistedState = stateName => { 
+export const isPersistedState = stateName => {
   const sessionState = sessionStorage.getItem(stateName);
   return sessionState && JSON.parse(sessionState);
 };
+
+export const sortByDate = (list, order) => list.sort((a, b) => {
+
+
+  if (a.release_date === "")
+    return -1;
+  if (b.release_date === "")
+    return 1;
+
+
+  let date1 = new Date(a.release_date);
+  let date2 = new Date(b.release_date);
+
+
+  return date1 < date2 ? 1 : -1;
+
+
+})
