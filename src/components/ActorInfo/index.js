@@ -6,9 +6,9 @@ import { useParams } from 'react-router';
 import { IMAGE_BASE_URL, POSTER_SIZE } from "../../config";
 //components
 import BreadCrumb from "../BreadCrumb";
-import Actor from "../Actor";
 import ActorDesc from '../ActorDesc';
 import Spinner from "../Spinner";
+
 
 //hook
 import { useActorFetch } from "../../hooks/useActorFetch"
@@ -21,6 +21,7 @@ const ActorInfo = () => {
     const { id } = useParams();
     const { state: actor, loading, error } = useActorFetch(id)
     console.log(actor);
+
 
     if (loading)
         return <Spinner />
@@ -35,6 +36,7 @@ const ActorInfo = () => {
                 imageURL=
                 {actor.profile_path ? `${IMAGE_BASE_URL}${POSTER_SIZE}${actor.profile_path}` : NoImage}
             />
+
         </div>
     )
 
