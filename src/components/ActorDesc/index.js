@@ -30,6 +30,7 @@ const ActorDesc = ({ actor, imageURL }) => {
     const fb = social.facebook_id;
     const tweet = social.twitter_id;
 
+
     if (loading)
         return <Spinner></Spinner>
     if (error)
@@ -52,9 +53,9 @@ const ActorDesc = ({ actor, imageURL }) => {
                     />
                 </div>
                 <div className="social-links">
-                    <img src={facebook} href="" alt="noimage"></img>
-                    <a href="https://www.instagram.com/{insta}/" ><img src={instagram} alt="noimage"></img></a>
-                    <img src={twitter} href=" " alt="noimage"></img>
+                    <a href={`https://www.facebook.com//${fb}`} rel="noreferrer" target="_blank" ><img src={facebook} href="" alt="noimage"></img></a>
+                    <a href={`https://www.instagram.com/${insta}/`} rel="noreferrer" target="_blank" ><img src={instagram} alt="noimage"></img></a>
+                    <a href={`https://twitter.com/${tweet}`} rel="noreferrer" target="_blank" ><img src={twitter} href=" " alt="noimage"></img></a>
 
 
                 </div>

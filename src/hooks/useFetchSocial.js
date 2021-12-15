@@ -13,8 +13,8 @@ export const useFetchSocial = actorid => {
 
                 setLoading(true);
                 setError(false);
-                const social = API.fetchSocial(actorid);
-
+                const social = await API.fetchSocial(actorid);
+                console.log(social);
                 setState({
                     ...social
                 })
