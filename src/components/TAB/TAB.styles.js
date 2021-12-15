@@ -13,6 +13,25 @@ h1{
 `;
 
 export const Content = styled.div`
+
+
+.Acting-option
+{
+    display: flex;
+    align-self: flex-end;
+    width: 30%;
+    font-size:1.03rem;
+    
+}
+
+.Crew-option
+{
+    display: flex;
+    align-self: flex-end;
+    width: 20%;
+    font-size:1.2rem;
+    
+}
 display :flex;
 flex-direction: column;
 border: 3px solid black;

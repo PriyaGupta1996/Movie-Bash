@@ -23,6 +23,13 @@ const apiSettings = {
       : `${POPULAR_BASE_URL}&page=${page}`;
     return await (await fetch(endpoint)).json();
   },
+
+  fetchSocial: async actorId => {
+    const endpoint = `${API_URL}person/${actorId}/external_ids?api_key=${API_KEY}`;
+    return await (await fetch(endpoint)).json();
+  },
+
+
   fetchActor: async actorId => {
     const endpoint = `${API_URL}person/${actorId}?api_key=${API_KEY}`;
     return await (await fetch(endpoint)).json();

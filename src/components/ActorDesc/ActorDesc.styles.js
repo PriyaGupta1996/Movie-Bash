@@ -14,7 +14,14 @@ line-height:1;
 width:50%;
 display: flex;
 flex-direction: column;
-order:1
+order:1;
+
+.social-links{
+    display: flex;
+    margin-left:20%;
+   
+
+}
 
 
 
@@ -34,6 +41,13 @@ word-spacing:3px;
 line-height:1.8;
 font-size:1.2rem;
 font-weight:900:
+}
+
+span{
+    font-weight:900;
+    font-size:1.2rem;
+    text-decoration:underline;
+    cursor :pointer;
 }
 
     h1,p{
