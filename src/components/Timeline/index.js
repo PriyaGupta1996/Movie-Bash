@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from 'react';
 import { useParams } from "react-router-dom";
 import { sortByDate } from "../../helpers"
 //hook
@@ -13,11 +13,14 @@ import TAB from "../TAB";
 
 
 
+
+
 const Timeline = () => {
     const { id } = useParams();
     const { state: timeline, loading, error } = useTimelineFetch(id);
-    //console.log(timeline.cast);
-    //console.log(timeline.crew);
+    const [castOrder, setcastOrder] = useState("desc");
+    const [crewOrder, setcrewOrder] = useState("desc");
+
 
     if (loading)
         return <Spinner />
@@ -25,11 +28,17 @@ const Timeline = () => {
     if (error)
         return <div> Something Went Wrong....</div>
 
-    const sortedCast = sortByDate(timeline.cast);
-    const sortedCrew = sortByDate(timeline.crew);
+    const sortedCast = sortByDate(timeline.cast, castOrder);
+    const sortedCrew = sortByDate(timeline.crew, crewOrder);
     return (
         <>
+
             <TAB header="Acting">
+                <select onChange={(e) => setcastOrder(e.target.value)} class="Acting-option">
+                    <option value="desc">Newest first</option>
+                    <option value="asc">Oldest first</option>
+                </select>
+
                 {sortedCast.map(castObject => (
                     <TimelineCredits
                         key={castObject.id}
@@ -43,6 +52,10 @@ const Timeline = () => {
             </TAB>
 
             <TAB header="Crew">
+                <select onChange={(e) => setcrewOrder(e.target.value)} class="Crew-option">
+                    <option value="desc">Newest first</option>
+                    <option value="asc">Oldest first</option>
+                </select>
                 {sortedCrew.map(crewObject => (
                     <TimelineCredits
                         key={crewObject.id}

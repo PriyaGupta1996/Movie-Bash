@@ -21,19 +21,23 @@ export const isPersistedState = stateName => {
 };
 
 export const sortByDate = (list, order) => list.sort((a, b) => {
-
-
-  if (a.release_date === "")
-    return -1;
-  if (b.release_date === "")
-    return 1;
-
-
   let date1 = new Date(a.release_date);
   let date2 = new Date(b.release_date);
+  if (order === "desc") {
+    if (a.release_date === "")
+      return -1;
+    if (b.release_date === "")
+      return 1;
 
+    return date1 < date2 ? 1 : -1;
+  }
+  else {
+    if (a.release_date === "")
+      return 1;
+    if (b.release_date === "")
+      return -1;
 
-  return date1 < date2 ? 1 : -1;
-
+    return date1 < date2 ? -1 : 1;
+  }
 
 })

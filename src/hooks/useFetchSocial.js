@@ -1,38 +1,42 @@
-import { useState, useEffect, useRef } from "react";
-import API from '../API';
+import { useEffect, useState } from "react";
+import API from "../API";
 
+export const useFetchSocial = actorid => {
 
-
-export const useTimelineFetch = (actorId) => {
     const [state, setState] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
-
     useEffect(() => {
-        const fetchTimeline = async () => {
+        const fetchSocialLinks = async () => {
             try {
+
                 setLoading(true);
                 setError(false);
-                const actor = await API.fetchActorCredits(actorId);
+                const social = API.fetchSocial(actorid);
 
                 setState({
-                    ...actor
+                    ...social
                 })
+
+
                 setLoading(false);
+
+
             }
             catch (error) {
                 setError(true);
+
             }
-        };
-
-        fetchTimeline();
-    }, [actorId])
 
 
+        }
 
+        fetchSocialLinks();
 
-    return { state, loading, error };
+    }, [actorid])
 
+    return { state, error, loading };
 
 }
+

@@ -5,6 +5,8 @@ const TimelineCredits = ({ date, title, character }) => {
 
     //let year = (new Date(date)).getFullYear();
 
+
+
     let year = date?.substring(0, 4);
     return (
         <Wrapper>
