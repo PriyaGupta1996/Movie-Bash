@@ -26,7 +26,7 @@ const apiSettings = {
 
   fetchSocial: async actorId => {
     const endpoint = `${API_URL}person/${actorId}/external_ids?api_key=${API_KEY}`;
-    return await (await fetch(endpoint)).json();
+    return (await fetch(endpoint)).json();
   },
 
 

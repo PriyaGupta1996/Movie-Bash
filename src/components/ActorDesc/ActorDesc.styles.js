@@ -17,8 +17,14 @@ flex-direction: column;
 order:1;
 
 .social-links{
+    width:70%;
     display: flex;
-    margin-left:20%;
+   justify-content:center;
+   
+
+img{
+    width:85%;
+}
    
 
 }
